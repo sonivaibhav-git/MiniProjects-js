@@ -23,10 +23,10 @@ Here is a list of the projects included in this repository:
 
 ... *(List as many projects as you have)* -->
 
-## How to Run
+<!-- ## How to Run
 
 To run these projects on your local machine:
 
 1. Clone this repository to your local machine.
    ```bash
-   git clone https://github.com/vaibhav-soni74/js_projects.git
+   git clone https://github.com/vaibhav-soni74/js_projects.git -->
