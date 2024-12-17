@@ -1,0 +1,220 @@
+:root {
+    --light-bg: #f9f9f9;
+    --light-text: #333;
+    --dark-bg: #121212;
+    --dark-text: #f9f9f9;
+    --primary-color: #4CAF50;
+    --highlight-color: #ffcccb;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    transition: background-color 0.5s, color 0.5s;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.container {
+    margin: 2rem auto;
+    max-width: 90%;
+    width: 800px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.6rem 1.2rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+.table-container {
+    margin-top: 1.5rem;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+td a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+.delete-btn {
+    color: red;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.highlight {
+    background-color: var(--highlight-color) !important;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.slider-label {
+    margin-right: 1rem;
+}
+
+input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+    appearance: none;
+    background: #ccc;
+    outline: none;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--primary-color);
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input[type="checkbox"]:checked::before {
+    left: 22px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    button {
+        width: 100%;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    textarea {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    td a {
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+
+    .slider-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    input[type="checkbox"] {
+        width: 35px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    .table-container {
+        margin-top: 1rem;
+    }
+
+    table {
+        font-size: 0.8rem;
+    }
+
+    td a {
+        max-width: 120px;
+        font-size: 0.9rem;
+    }
+
+    textarea {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+}
