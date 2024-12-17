@@ -9,7 +9,7 @@ Each project represents a step forward in my journey to becoming proficient in J
 
 Here is a list of the projects included in this repository:
 
-1. **Project 1: [LINKOO]**
+1. <emp>Project 1:</emp> <a href= "https://linkoo-linksorter.netlify.app/">LINKOO</a>
    - <emp>Description:</emp><br> <p>Linkoo! is a simple and efficient tool to organize and sort your links with just a few clicks, offering features like easy link deletion and PDF download. It’s responsive, user-friendly, and keeps your data safe with local storage for seamless access anytime..</p>
    - <emp>Key Concepts Learned:</emp><br> <p>Variables, functions, dynamic content handling & local storage.</P>
 
