@@ -9,15 +9,15 @@ Each project represents a step forward in my journey to becoming proficient in J
 
 Here is a list of the projects included in this repository:
 
-1. <emp>Project 1:</emp> <a href= "https://linkoo-linksorter.netlify.app/">LINKOO</a>
+1. <emp>Project 1:</emp>LINKOO
    - <emp>Description:</emp><br> <p>Linkoo! is a simple and efficient tool to organize and sort your links with just a few clicks, offering features like easy link deletion and PDF download. It’s responsive, user-friendly, and keeps your data safe with local storage for seamless access anytime..</p>
    - <emp>Key Concepts Learned:</emp><br> <p>Variables, functions, dynamic content handling & local storage.</P>
 
-<!-- 2. **Project 2: [Project Name]**
-   - Description: A [brief description of the project].
-   - Key Concepts Learned: Arrays, loops, conditionals, and form handling.
+2. <emp>Project 2:</emp> [Resume Maker]
+   - Description: Resume Maker is a Professional template tool use to build your resume with just a few details, The resume can be viewed in real time from the preview section. Your resume can be downloaded through the Print CV button. 
+   - Key Concepts Learned: Nodes, Links & Form handling.
 
-3. **Project 3: [Project Name]**
+<!-- 3. **Project 3: [Project Name]**
    - Description: A [brief description of the project].
    - Key Concepts Learned: Objects, JSON handling, and error handling.
 
