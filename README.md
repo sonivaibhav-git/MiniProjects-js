@@ -13,7 +13,7 @@ Here is a list of the projects included in this repository:
    - <emp>Description:</emp><br> <p>Linkoo! is a simple and efficient tool to organize and sort your links with just a few clicks, offering features like easy link deletion and PDF download. It’s responsive, user-friendly, and keeps your data safe with local storage for seamless access anytime..</p>
    - <emp>Key Concepts Learned:</emp><br> <p>Variables, functions, dynamic content handling & local storage.</P>
 
-2. <emp>Project 2:</emp> [Resume Maker]
+2. <emp>Project 2:</emp> Resume Maker
    - Description: Resume Maker is a Professional template tool use to build your resume with just a few details, The resume can be viewed in real time from the preview section. Your resume can be downloaded through the Print CV button. 
    - Key Concepts Learned: Nodes, Links & Form handling.
 
