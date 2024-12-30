@@ -17,11 +17,15 @@ Here is a list of the projects included in this repository:
    - Description: Resume Maker is a Professional template tool use to build your resume with just a few details, The resume can be viewed in real time from the preview section. Your resume can be downloaded through the Print CV button. 
    - Key Concepts Learned: Nodes, Links & Form handling.
 
-<!-- 3. **Project 3: [Project Name]**
-   - Description: A [brief description of the project].
-   - Key Concepts Learned: Objects, JSON handling, and error handling.
+3. <emp>Project 3:</emp> Cologen
+   - Description: Cologen is a tool that can be use to generate different color palletes along with its HEX Code.
+   - Key Concepts Learned: random method, Maths floor Functions.
 
-... *(List as many projects as you have)* -->
+4. <emp>Project 4:</emp> TIC TAC TOE Game
+   - Description: TIC TAC TOE is a simple 2 player game. 
+   - Key Concepts Learned: 2D arrays, DOM Manipulation (Event Handling), conditional logic.
+
+<!-- ... *(List as many projects as you have)*  -->
 
 <!-- ## How to Run
 
@@ -29,4 +33,4 @@ To run these projects on your local machine:
 
 1. Clone this repository to your local machine.
    ```bash
-   git clone https://github.com/vaibhav-soni74/js_projects.git -->
+   git clone https://github.com/vaibhav-soni74/js_projects.git
