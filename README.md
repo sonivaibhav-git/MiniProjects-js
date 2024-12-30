@@ -24,6 +24,9 @@ Here is a list of the projects included in this repository:
 4. <emp>Project 4:</emp> TIC TAC TOE Game
    - Description: TIC TAC TOE is a simple 2 player game. 
    - Key Concepts Learned: 2D arrays, DOM Manipulation (Event Handling), conditional logic.
+5. <emp>Project 5:</emp> Rock Paper Scissor Game
+   - Description: Rock Paper Scissor is a single player game, Where the user can play the game with the computer itself. 
+   - Key Concepts Learned: DOM Manipulation (Event Handling), conditional logic.
 
 <!-- ... *(List as many projects as you have)*  -->
 
