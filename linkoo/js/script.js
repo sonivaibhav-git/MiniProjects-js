@@ -1,99 +1,105 @@
-
 const { jsPDF } = window.jspdf;
 
-// Theme Toggle
-document.getElementById('themeToggle').addEventListener('change', function () {
-    document.body.classList.toggle('dark-mode', this.checked);
-});
+        document.getElementById('themeToggle').addEventListener('change', function () {
+            document.body.classList.toggle('dark-mode', this.checked);
+        });
 
-// Load Table Data from Local Storage
-document.addEventListener("DOMContentLoaded", loadTableFromLocalStorage);
+        document.addEventListener("DOMContentLoaded", loadTableFromLocalStorage);
 
-// Sort Links
-function sortLinks() {
-    const input = document.getElementById("linkInput").value.trim();
-    if (!input) {
-        alert("Please paste the link first");
-        return; // If textarea is empty, do not proceed
-    }
+        function sortLinks() {
+            const input = document.getElementById("linkInput").value.trim();
+            if (!input) {
+                alert("Please paste the link first");
+                return;
+            }
 
-    const lines = input.split("\n").filter(link => link.trim() !== "");
-    const tableBody = document.querySelector("#linkTable tbody");
+            const lines = input.split("\n").filter(link => link.trim() !== "");
+            const tableBody = document.querySelector("#linkTable tbody");
 
-    lines.forEach(link => {
-        if (!checkDuplicate(link)) {
-            const appName = new URL(link).hostname.replace('www.', '').split('.')[0];
-            addTableRow(appName, link);
+            lines.forEach(link => {
+                if (!checkDuplicate(link)) {
+                    const appName = new URL(link).hostname.replace('www.', '').split('.')[0];
+                    const shortenedLink = shortenUrl(link);
+                    addTableRow(appName, link, shortenedLink);
+                }
+            });
+
+            document.getElementById("linkInput").value = "";
+            saveTableToLocalStorage();
         }
-    });
 
-    document.getElementById("linkInput").value = ""; // Auto-clear textarea
-    saveTableToLocalStorage();
-}
-
-// Check for Duplicate Link
-function checkDuplicate(link) {
-    let isDuplicate = false;
-    document.querySelectorAll("#linkTable tbody tr").forEach(row => {
-        const existingLink = row.cells[1].querySelector("a").href;
-        if (existingLink === link) {
-            isDuplicate = true;
-            row.classList.add('highlight');
-            setTimeout(() => row.classList.remove('highlight'), 2000);
+        function shortenUrl(link) {
+            const urlObj = new URL(link);
+            const host = urlObj.hostname.replace('www.', '');
+            return `${host}`;
         }
-    });
-    if (isDuplicate) alert("The link already exists!");
-    return isDuplicate;
-}
 
-// Add Row to Table
-function addTableRow(appName, link) {
-    const tableBody = document.querySelector("#linkTable tbody");
-    const row = `<tr>
-                    <td>${appName}</td>
-                    <td><a href="${link}" target="_blank">${link}</a></td>
-                    <td><span class="delete-btn" onclick="deleteRow(this)">&#10060;</span></td>
-                </tr>`;
-    tableBody.insertAdjacentHTML("beforeend", row);
-}
+        function checkDuplicate(link) {
+            let isDuplicate = false;
+            document.querySelectorAll("#linkTable tbody tr").forEach(row => {
+                const existingLink = row.cells[1].querySelector("a").href;
+                if (existingLink === link) {
+                    isDuplicate = true;
+                    row.classList.add('highlight');
+                    setTimeout(() => row.classList.remove('highlight'), 2000);
+                }
+            });
+            if (isDuplicate) alert("The link already exists!");
+            return isDuplicate;
+        }
 
-// Delete Row
-function deleteRow(button) {
-    button.parentElement.parentElement.remove();
-    saveTableToLocalStorage();
-}
+        function addTableRow(appName, link, shortenedLink) {
+            const tableBody = document.querySelector("#linkTable tbody");
+            const row = `<tr>
+                            <td>${appName}</td>
+                            <td><a href="${link}" target="_blank">${shortenedLink}</a></td>
+                            <td contenteditable="true" onblur="updateComment(this)"></td>
+                            <td><span class="delete-btn" onclick="deleteRow(this)">&#10060;</span></td>
+                        </tr>`;
+            tableBody.insertAdjacentHTML("beforeend", row);
+        }
 
-// Save Table to Local Storage
-function saveTableToLocalStorage() {
-    const tableData = [];
-    document.querySelectorAll("#linkTable tbody tr").forEach(tr => {
-        const appName = tr.cells[0].innerText;
-        const link = tr.cells[1].querySelector("a").href;
-        tableData.push({ appName, link });
-    });
-    localStorage.setItem("linkTableData", JSON.stringify(tableData));
-}
+        function updateComment(td) {
+            saveTableToLocalStorage();
+        }
 
-// Load Table from Local Storage
-function loadTableFromLocalStorage() {
-    const tableData = JSON.parse(localStorage.getItem("linkTableData") || "[]");
-    tableData.forEach(({ appName, link }) => addTableRow(appName, link));
-}
+        function deleteRow(button) {
+            button.parentElement.parentElement.remove();
+            saveTableToLocalStorage();
+        }
 
-// Download Table as PDF
-function downloadPDF() {
-    const doc = new jsPDF();
-    doc.text("Linkoo! - Sorted Links", 10, 10);
+        function saveTableToLocalStorage() {
+            const tableData = [];
+            document.querySelectorAll("#linkTable tbody tr").forEach(tr => {
+                const appName = tr.cells[0].innerText;
+                const link = tr.cells[1].querySelector("a").href;
+                const comment = tr.cells[2].innerText;
+                tableData.push({ appName, link, comment });
+            });
+            localStorage.setItem("linkTableData", JSON.stringify(tableData));
+        }
 
-    const rows = [];
-    document.querySelectorAll("#linkTable tbody tr").forEach(tr => {
-        rows.push([tr.cells[0].innerText, tr.cells[1].querySelector("a").href]);
-    });
+        function loadTableFromLocalStorage() {
+            const tableData = JSON.parse(localStorage.getItem("linkTableData") || "[]");
+            tableData.forEach(({ appName, link, comment }) => {
+                const shortenedLink = shortenUrl(link);
+                addTableRow(appName, link, shortenedLink);
+            });
+        }
 
-    doc.autoTable({
-        head: [['App Name', 'Link']],
-        body: rows
-    });
+        function downloadPDF() {
+            const doc = new jsPDF();
+            doc.text("Linkoo! - Sorted Links", 10, 10);
 
-    doc.save("linkoo_sorted_links.pdf");
-}
+            const rows = [];
+            document.querySelectorAll("#linkTable tbody tr").forEach(tr => {
+                rows.push([tr.cells[0].innerText, tr.cells[1].querySelector("a").href, tr.cells[2].innerText]);
+            });
+
+            doc.autoTable({
+                head: [['App Name', 'Link', 'Comments']],
+                body: rows
+            });
+
+            doc.save("linkoo_sorted_links.pdf");
+        }

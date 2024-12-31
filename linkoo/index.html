@@ -1,56 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linkoo! - Link Sorter</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <link
-      rel="icon"
-      href="https://i.ibb.co/VWHff3t/Designer.png"
-      type="image/png"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <header>Linkoo! - Link Sorter</header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>📋 Linkoo! - Link Sorter</header>
     <div class="container">
-      <!-- Theme Slider -->
-      <div class="slider-container">
-        <span class="slider-label">Dark Mode</span>
-        <input type="checkbox" id="themeToggle" />
-      </div>
-
-      <!-- Textarea for Links -->
-      <textarea
-        id="linkInput"
-        placeholder="Paste your links here, one per line..."
-      ></textarea>
-
-      <!-- Buttons -->
-      <button onclick="sortLinks()">Sort Links</button>
-      <button onclick="downloadPDF()">Download as PDF</button>
-
-      <!-- Table -->
-      <div class="table-container">
-        <table id="linkTable">
-          <thead>
-            <tr>
-              <th>App Name</th>
-              <th>Link</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
+        <div class="slider-container">
+            <span class="slider-label">Dark Mode</span>
+            <input type="checkbox" id="themeToggle">
+        </div>
+        <textarea id="linkInput" placeholder="Paste your links here, one per line..."></textarea>
+        <button onclick="sortLinks()">Sort Links</button>
+        <button onclick="downloadPDF()">Download as PDF</button>
+        <div class="table-container">
+            <table id="linkTable">
+                <thead>
+                    <tr>
+                        <th>App Name</th>
+                        <th>Link</th>
+                        <th>Comments</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- jsPDF & jsPDF AutoTable -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+    
+    <script src="./js/script.js"></script>
+</body>
 </html>

@@ -153,68 +153,49 @@ input[type="checkbox"]:checked::before {
     left: 22px;
 }
 
-/* Responsive Styling */
+/* Make the table responsive for smaller screens */
 @media (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 0 1rem;
-    }
-
-    button {
-        width: 100%;
-        margin: 0.5rem 0;
-        font-size: 1.1rem;
-    }
-
-    textarea {
-        font-size: 0.9rem;
-        padding: 0.4rem;
+    .table-container {
+        margin-top: 1rem;
+        overflow-x: auto;
     }
 
     table {
+        width: 100%;
+        table-layout: auto; /* Allows table to resize */
+    }
+
+    th, td {
+        padding: 0.5rem; /* Reduce padding for smaller screens */
         font-size: 0.9rem;
     }
 
+    /* Ensure the links in the table are displayed properly on small screens */
     td a {
-        max-width: 100%;
+        max-width: 150px; /* Limit width to avoid overflow */
+        white-space: normal;
         word-wrap: break-word;
-    }
-
-    .slider-container {
-        justify-content: center;
-        width: 100%;
-    }
-
-    input[type="checkbox"] {
-        width: 35px;
-        height: 18px;
     }
 }
 
+/* Adjust the dark mode toggle for mobile view */
 @media (max-width: 480px) {
-    header {
-        font-size: 1.2rem;
+    .slider-container {
+        flex-direction: column; /* Stack the label and checkbox */
+        align-items: flex-start;
     }
 
-    button {
-        font-size: 1rem;
+    .slider-label {
+        margin-bottom: 0.5rem; /* Space between the label and checkbox */
     }
 
-    .table-container {
-        margin-top: 1rem;
+    input[type="checkbox"] {
+        width: 36px; /* Make the checkbox a bit smaller */
+        height: 18px;
     }
 
-    table {
-        font-size: 0.8rem;
-    }
-
-    td a {
-        max-width: 120px;
-        font-size: 0.9rem;
-    }
-
-    textarea {
-        font-size: 0.8rem;
-        padding: 0.3rem;
+    input[type="checkbox"]::before {
+        width: 14px;
+        height: 14px; /* Adjust the knob size */
     }
 }
