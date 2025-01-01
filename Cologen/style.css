@@ -1,49 +1,51 @@
 /* Import Google font */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 body {
-  background: #7a41ff;
+  background: #F2FDD2;
 }
 .container {
-  margin: 20px;
+  /* margin: 20px; */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
 }
 .container .color {
-  margin: 12px;
-  padding: 7px;
+  width: calc(100% / 5 - 0px);
+  height: 100vh;
   list-style: none;
   cursor: pointer;
   text-align: center;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 10px 25px rgba(52,87,220,0.08);
+  box-shadow: 0 10px 25px rgba(52, 87, 220, 0.08);
   transition: all 0.3s ease;
 }
 .container .color:active {
   transform: scale(0.95);
 }
 .color .rect-box {
-  width: 185px;
-  height: 188px;
-  border-radius: 4px;
+  width: 100% / 5;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .color:hover .rect-box {
   filter: brightness(107%);
 }
 .color .hex-value {
   display: block;
-  color: #444;
+  color: #fff;
   user-select: none;
   font-weight: 500;
   font-size: 1.15rem;
-  margin: 12px 0 8px;
+  border: 2px solid #fff;
+  border-radius: 2rem;
+  width: 10rem;
   text-transform: uppercase;
 }
 .refresh-btn {
@@ -56,11 +58,11 @@ body {
   font-weight: 500;
   font-size: 1.1rem;
   border-radius: 5px;
-  background: #8A6CFF;
+  background: #8a6cff;
   padding: 13px 20px;
   border: 2px solid #fff;
   transform: translateX(-50%);
-  box-shadow: 0 15px 30px rgba(52,87,220,0.2);
+  box-shadow: 0 15px 30px rgba(52, 87, 220, 0.2);
   transition: all 0.3s ease;
 }
 .refresh-btn:hover {
