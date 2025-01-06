@@ -30,5 +30,4 @@ rect.addEventListener("mouseleave",function(){
     gsap.to(rect,{
         backgroundColor: "white",
     });
-    rect.computedStyleMap.backgroundColor = "rgb(255,255,255)";
 })
