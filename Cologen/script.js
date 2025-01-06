@@ -3,6 +3,9 @@ const refreshBtn = document.querySelector(".refresh-btn");
 
 const maxPaletteBoxes = 5;
 
+// Function to check if the user is on a mobile device
+const isMobile = () => /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
 // Function to copy color to clipboard
 const copyColor = (color, hexValue) => {
     const tempInput = document.createElement("input");
@@ -15,6 +18,18 @@ const copyColor = (color, hexValue) => {
     const hexSpan = color.querySelector(".hex-value");
     hexSpan.innerText = "Copied!";
     setTimeout(() => (hexSpan.innerText = hexValue), 1000);
+};
+
+// Function to determine if the color is light or dark
+const isColorDark = (hex) => {
+    const rgb = parseInt(hex.slice(1), 16); // Convert hex to RGB
+    const r = (rgb >> 16) & 0xff; // Extract red
+    const g = (rgb >> 8) & 0xff; // Extract green
+    const b = rgb & 0xff; // Extract blue
+
+    // Calculate luminance
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luminance < 128; // Consider color dark if luminance is below 128
 };
 
 // Function to generate a lighter or darker shade
@@ -38,38 +53,51 @@ const generateRandomColor = () => {
     return `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, "0").toUpperCase()}`;
 };
 
-// Function to generate the palette
+// Function to generate the palette based on 60-30-10 rule
 const generatePalette = () => {
     container.innerHTML = ""; // Clearing the container
 
-    // Randomly decide whether to generate shades or random colors
-    const isShades = Math.random() > 0.5; // 50% chance
+    const baseColor = generateRandomColor(); // Base color
+    const secondaryColor = adjustShade(baseColor, -30); // Slightly darker shade
+    const accentColor = adjustShade(baseColor, 60); // Lighter shade
 
-    // Generate a random base color
-    let baseColor = generateRandomColor();
+    const colors = [
+        { hex: baseColor, weight: "60%" },
+        { hex: secondaryColor, weight: "30%" },
+        { hex: accentColor, weight: "10%" },
+        { hex: generateRandomColor(), weight: "Random" },
+        { hex: generateRandomColor(), weight: "Random" },
+    ];
 
-    for (let i = 0; i < maxPaletteBoxes; i++) {
-        let randomHex;
+    colors.forEach(({ hex }) => {
+        const isDark = isColorDark(hex);
+        const textColor = isDark ? "white" : "black";
+        const borderColor = isDark ? "white" : "black";
 
-        if (isShades) {
-            // Adjust shades of the base color
-            const shadeFactor = (i - Math.floor(maxPaletteBoxes / 2)) * 30; // Gradually lighten or darken
-            randomHex = adjustShade(baseColor, shadeFactor);
-        } else {
-            // Generate completely random colors
-            randomHex = generateRandomColor();
-        }
-
-        // Create and append the color element
         const color = document.createElement("li");
         color.classList.add("color");
-        color.innerHTML = `<div class="rect-box" style="background: ${randomHex}"><span class="hex-value">${randomHex}</span></div>`;
+        color.innerHTML = `
+            <div class="rect-box" style="background: ${hex}">
+                <span class="hex-value" style="color: ${textColor}; border: 1px solid ${borderColor}">${hex}</span>
+            </div>
+        `;
 
-        color.addEventListener("click", () => copyColor(color, randomHex));
+        color.addEventListener("click", () => copyColor(color, hex));
         container.appendChild(color);
-    }
+    });
 };
 
 generatePalette();
 
+// Event listener for refresh button
 refreshBtn.addEventListener("click", generatePalette);
+
+// Add keydown listener for desktop users
+if (!isMobile()) {
+    document.addEventListener("keydown", (event) => {
+        if (event.code === "Space") {
+            event.preventDefault(); // Prevent page scroll when spacebar is pressed
+            generatePalette();
+        }
+    });
+}
