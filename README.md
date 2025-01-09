@@ -27,6 +27,9 @@ Here is a list of the projects included in this repository:
 5. <emp>Project 5:</emp> Rock Paper Scissor Game
    - Description: Rock Paper Scissor is a single player game, Where the user can play the game with the computer itself. 
    - Key Concepts Learned: DOM Manipulation (Event Handling), conditional logic.
+6. <emp>Project 6:</emp> Weather App
+   - Description: weather app provides you the temperature, humidity, wind speed of the desired city you entered in search box.
+   - Key Concepts Learned: DOM Manipulation (Event Handling), conditional logic, Api Handling.
 
 <!-- ... *(List as many projects as you have)*  -->
 
